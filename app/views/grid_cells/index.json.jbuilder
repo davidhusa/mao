@@ -1,0 +1,1 @@
+json.array! @grid_cells, partial: 'grid_cells/grid_cell', as: :grid_cell

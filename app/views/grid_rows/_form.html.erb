@@ -1,0 +1,36 @@
+<%= form_for(grid_row) do |f| %>
+  <% if grid_row.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(grid_row.errors.count, "error") %> prohibited this grid_row from being saved:</h2>
+
+      <ul>
+      <% grid_row.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="">
+    <%= grid_row.card.name if grid_row.card %>
+  </div>
+
+  <div class="field">
+    <%= f.label :width %>
+    <%= f.number_field :width %>
+  </div>
+
+  <div class="field">
+    <%= f.label :header %>
+    <%= f.check_box :header %>
+  </div>
+
+  <div class="field">
+    <%= f.label :position %>
+    <%= f.number_field :position %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

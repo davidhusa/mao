@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Grid row:</strong>
+  <%= @grid_cell.grid_row %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @grid_cell.description %>
+</p>
+
+<p>
+  <strong>Position:</strong>
+  <%= @grid_cell.position %>
+</p>
+
+<%= link_to 'Edit', edit_grid_cell_path(@grid_cell) %> |
+<%= link_to 'Back', grid_cells_path %>

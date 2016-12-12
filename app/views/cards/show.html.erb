@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @card.user %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @card.name %>
+</p>
+
+<p>
+  <strong>Card type:</strong>
+  <%= @card.card_type %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @card.description %>
+</p>
+<p>
+  <strong>List Items:</strong>
+  <ul>
+  <% @card.list_items.each do |li| %>
+    <li>
+      <%= li.description %>
+    </li>
+  <% end %>
+  </ul>
+</p>
+
+<p>
+  <strong>Quote:</strong>
+  <%= @card.quote %>
+</p>
+
+<p>
+  <strong>Cost:</strong>
+  <%= @card.cost %>
+</p>
+
+<p>
+  <strong>Quick ref:</strong>
+  <%= @card.quick_ref %>
+</p>
+
+<p>
+  <strong>Max grid width:</strong>
+  <%= @card.max_grid_width %>
+</p>
+
+<%= link_to 'Edit', edit_card_path(@card) %> |
+<%= link_to 'Back', cards_path %>

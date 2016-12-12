@@ -1,0 +1,31 @@
+<h1>Grid Rows</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Card</th>
+      <th>Width</th>
+      <th>Header</th>
+      <th>Position</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @grid_rows.each do |grid_row| %>
+      <tr>
+        <td><%= grid_row.card %></td>
+        <td><%= grid_row.width %></td>
+        <td><%= grid_row.header %></td>
+        <td><%= grid_row.position %></td>
+        <td><%= link_to 'Show', grid_row %></td>
+        <td><%= link_to 'Edit', edit_grid_row_path(grid_row) %></td>
+        <td><%= link_to 'Destroy', grid_row, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Grid Row', new_grid_row_path %>

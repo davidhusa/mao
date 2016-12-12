@@ -1,0 +1,112 @@
+<%= javascript_tag do %>
+  var deleteMe = function(event) {event.preventDefault();$(this).parents('.item').remove();}
+<% end %>
+<div id="list_item_template" style="display:none">
+  <div class="field item">
+    <div>
+      <button class="delete">X</button>
+      <%= javascript_tag do %>
+        $("button.delete").click(deleteMe)
+      <% end %>
+      <textarea name="card[list_items][0]" id="list_item_0"></textarea>
+    </div>
+  </div>
+</div>
+<%= javascript_tag do %>
+  var template = $("#list_item_template").html();
+  var clone = function(text) {
+    $(".list_items").append(template.replace(/0/g, (bottomId('.list_items')+1).toString()));
+    if (text) {
+       $(".list_items").children().last().children().children().val(text)
+    }
+  }
+  var deleteMe = function(event) {event.preventDefault();$(this).parents('.item').remove();}
+<% end %>
+
+<%= form_for(card) do |f| %>
+  <% if card.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(card.errors.count, "error") %> prohibited this card from being saved:</h2>
+
+      <ul>
+      <% card.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= card.user.email if card.user %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :card_type_id %>
+    <%= f.select :card_type_id, @card_type_options %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :quote %>
+    <%= f.text_area :quote %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cost %>
+    <%= f.number_field :cost %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Quick Reference" %>
+    <%= f.text_field :quick_ref %>
+  </div>
+
+  <div class="list_items">
+    <label for="list_items">Line Item</label>
+    <button class="cloner">Add List Item</button>
+    
+    <% i = 0 %>
+    <% card.list_items.each do |li| %>
+      <%= javascript_tag do %>
+        clone("<%= li.description %>");
+      <% end %>
+    <% end %>
+
+    <!-- new list items go here -->
+  </div>
+
+  <div class="field">
+    <%= f.label :max_grid_width %>
+    <%= f.number_field :max_grid_width %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<%= javascript_tag do %>
+  $("button.cloner").click(function(event){
+    event.preventDefault();
+    clone();
+  })
+
+  var bottomId = function(selector) {
+    var bottomId;
+    bottomId = /\d+$/.exec($(selector).children().children().children('textarea').last().attr('id'));
+    if (bottomId) {
+      return parseInt(bottomId);
+    }
+    return 0;
+  };
+<% end %>

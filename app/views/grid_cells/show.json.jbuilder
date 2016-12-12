@@ -1,0 +1,1 @@
+json.partial! "grid_cells/grid_cell", grid_cell: @grid_cell

@@ -1,0 +1,29 @@
+<h1>Grid Cells</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Grid row</th>
+      <th>Description</th>
+      <th>Position</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @grid_cells.each do |grid_cell| %>
+      <tr>
+        <td><%= grid_cell.grid_row %></td>
+        <td><%= grid_cell.description %></td>
+        <td><%= grid_cell.position %></td>
+        <td><%= link_to 'Show', grid_cell %></td>
+        <td><%= link_to 'Edit', edit_grid_cell_path(grid_cell) %></td>
+        <td><%= link_to 'Destroy', grid_cell, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Grid Cell', new_grid_cell_path %>

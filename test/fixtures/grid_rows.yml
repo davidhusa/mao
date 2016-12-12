@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  card: one
+  width: 1
+  header: false
+  position: 1
+
+two:
+  card: two
+  width: 1
+  header: false
+  position: 1

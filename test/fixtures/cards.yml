@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  name: MyString
+  card_type: one
+  description: MyText
+  quote: MyText
+  cost: 1
+  quick_ref: MyString
+  max_grid_width: 1
+
+two:
+  user: two
+  name: MyString
+  card_type: two
+  description: MyText
+  quote: MyText
+  cost: 1
+  quick_ref: MyString
+  max_grid_width: 1

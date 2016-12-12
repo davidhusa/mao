@@ -1,0 +1,37 @@
+<h1>Cards</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Name</th>
+      <th>Ref</th> 
+      <th>Card type</th>
+      <th>Description</th>
+      <th>Quote</th>
+      <th>List Items</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cards.each do |card| %>
+      <tr>
+        <td><%= card.user.email %></td>
+        <td><%= card.name %></td>
+        <td><%= card.quick_ref %></td>
+        <td><%= card.card_type.name %></td>
+        <td><%= card.description[0..11] %></td>
+        <td><%= card.quote[0..11] %></td>
+        <td><%= card.list_items.size %></td>
+        <td><%= link_to 'Show', card %></td>
+        <td><%= link_to 'Edit', edit_card_path(card) %></td>
+        <td><%= link_to 'Destroy', card, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Card', new_card_path %>
